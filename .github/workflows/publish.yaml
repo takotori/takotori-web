@@ -6,10 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build and push images
+      - name: Docker login
         run: |
           docker login --username takotori --password ${{ secrets.GH_PAT }} ghcr.io
-          docker build frontend/ --tag ghcr.io/takotori/takotori-web-frontend:latest
-          docker build backend/ --tag ghcr.io/takotori/takotori-web-backend:latest
+      - name: Build and publish frontend
+        run: |
+          docker build frontend/ --tag ghcr.io/takotori/takotori-web-frontend:latest -f frontend/Dockerfile
           docker push ghcr.io/takotori/takotori-web-frontend:latest
+      - name: Build and publish backend
+        run: |
+          docker build backend/ --tag ghcr.io/takotori/takotori-web-backend:latest -f backend/Dockerfile
           docker push ghcr.io/takotori/takotori-web-backend:latest
