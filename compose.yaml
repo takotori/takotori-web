@@ -28,20 +28,6 @@ services:
     volumes:
       - ./backend/src:/code/src
       - backend-cache:/code/target
-    depends_on:
-      - db
-
-  db:
-    image: postgres:12-alpine
-    restart: always
-    environment:
-      - POSTGRES_PASSWORD=mysecretpassword
-    networks:
-      - server-side
-    ports:
-      - 5432:5432
-    volumes:
-      - db-data:/var/lib/postgresql/data
 
 networks:
   client-side: {}

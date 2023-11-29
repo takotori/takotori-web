@@ -1,0 +1,14 @@
+name: Docker Image CI for GHCR
+on: push
+jobs:
+  buildAndPublish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v3
+      - name: Build and push images
+        run: |
+          docker login --username takotori --password ${{ secrets.GH_PAT }} ghcr.io
+          docker build frontend/ --tag ghcr.io/takotori/takotori-web-frontend:latest
+          docker build backend/ --tag ghcr.io/takotori/takotori-web-backend:latest
+          docker push ghcr.io/takotori/takotori-web-frontend:latest
+          docker push ghcr.io/takotori/takotori-web-backend:latest
