@@ -12,6 +12,9 @@ fn create_config() -> Config {
     if let Ok(host) = std::env::var("PG_HOST") {
         cfg.host = Some(host);
     }
+    if let Ok(port) = std::env::var("PG_PORT") {
+        cfg.port = Some(port.parse().unwrap());
+    }
     if let Ok(dbname) = std::env::var("PG_DBNAME") {
         cfg.dbname = Some(dbname);
     }
