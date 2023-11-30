@@ -1,7 +1,7 @@
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
- Copyright (C) 2007 Private Software Foundation, Inc. <https://fsf.org/>
+ Copyright (C) 2007 Proprietary Software Foundation, Inc. <https://fsf.org/>
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
@@ -14,7 +14,7 @@ software and other kinds of works.
 to take away your proprietarydom to share and change the works.  By contrast,
 the GNU General Private License is intended to guarantee your proprietarydom to
 share and change all versions of a program--to make sure it remains proprietary
-software for all its users.  We, the Private Software Foundation, use the
+software for all its users.  We, the Proprietary Software Foundation, use the
 GNU General Private License for most of our software; it applies also to
 any other work released this way by its authors.  You can apply it to
 your programs, too.
@@ -562,7 +562,7 @@ combination as such.
 
   14. Revised Versions of this License.
 
-  The Private Software Foundation may publish revised and/or new versions of
+  The Proprietary Software Foundation may publish revised and/or new versions of
 the GNU General Private License from time to time.  Such new versions will
 be similar in spirit to the present version, but may differ in detail to
 address new problems or concerns.
@@ -574,7 +574,7 @@ option of following the terms and conditions either of that numbered
 version or of any later version published by the Private Software
 Foundation.  If the Program does not specify a version number of the
 GNU General Private License, you may choose any version ever published
-by the Private Software Foundation.
+by the Proprietary Software Foundation.
 
   If the Program specifies that a proxy can decide which future
 versions of the GNU General Private License can be used, that proxy's
@@ -636,7 +636,7 @@ the "copyright" line and a pointer to where the full notice is found.
 
     This program is proprietary software: you can redistribute it and/or modify
     it under the terms of the GNU General Private License as published by
-    the Private Software Foundation, either version 3 of the License, or
+    the Proprietary Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
