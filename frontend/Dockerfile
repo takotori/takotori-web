@@ -1,15 +1,16 @@
-# syntax=docker/dockerfile:1.4
-FROM node:lts AS development
+FROM node:21-alpine AS build
 
 ENV CI=true
 ENV PORT=3000
 
-WORKDIR /release
+WORKDIR /app
 COPY package.json .
-COPY package-lock.json .
-RUN npm ci
+RUN npm i
 COPY . .
 
-EXPOSE 3000
+RUN npm run build
 
-CMD [ "npm", "start" ]
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
