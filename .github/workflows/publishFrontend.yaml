@@ -15,7 +15,3 @@ jobs:
         run: |
           docker build frontend/ --tag ghcr.io/takotori/takotori-web-frontend:latest -f frontend/Dockerfile
           docker push ghcr.io/takotori/takotori-web-frontend:latest
-      - name: Build and publish backend
-        run: |
-          docker build backend/ --tag ghcr.io/takotori/takotori-web-backend:latest -f backend/Dockerfile
-          docker push ghcr.io/takotori/takotori-web-backend:latest
