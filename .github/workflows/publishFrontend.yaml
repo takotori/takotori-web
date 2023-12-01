@@ -9,9 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Docker login
-        run: |
-          docker login --username takotori --password ${{ secrets.GH_PAT }} ghcr.io
-      - name: Build and publish frontend
-        run: |
-          docker build frontend/ --tag ghcr.io/takotori/takotori-web-frontend:latest -f frontend/Dockerfile
-          docker push ghcr.io/takotori/takotori-web-frontend:latest
+        run: docker login --username takotori --password ${{ secrets.GH_PAT }} ghcr.io
+      - name: Build
+        run: docker build frontend/ --tag ghcr.io/takotori/takotori-web-frontend:latest -f frontend/Dockerfile
+      - name: Publish
+        run: docker push ghcr.io/takotori/takotori-web-frontend:latest
