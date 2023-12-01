@@ -3,7 +3,7 @@ services:
   frontend:
     build:
       context: frontend
-      dockerfile: Dockerfile
+      dockerfile: dev.Dockerfile
     ports:
       - 3000:80
     volumes:
@@ -20,6 +20,7 @@ services:
       - RUST_LOG=debug
       - PG_DBNAME=postgres
       - PG_HOST=db
+      - PG_PORT=5432
       - PG_USER=postgres
       - PG_PASSWORD=mysecretpassword
     depends_on:
