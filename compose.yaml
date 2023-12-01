@@ -6,8 +6,6 @@ services:
       dockerfile: dev.Dockerfile
     ports:
       - 3000:80
-    volumes:
-      - ./frontend/src:/app
 
   backend:
     build:
@@ -20,9 +18,11 @@ services:
       - RUST_LOG=debug
       - PG_DBNAME=postgres
       - PG_HOST=db
-      - PG_PORT=5432
       - PG_USER=postgres
       - PG_PASSWORD=mysecretpassword
+    networks:
+      - client-side
+      - server-side
     depends_on:
       - db
 
@@ -35,6 +35,12 @@ services:
       - 5432:5432
     volumes:
       - db-data:/var/lib/postgresql/data
+    networks:
+      - server-side
 
 volumes:
   db-data: {}
+
+networks:
+  client-side: {}
+  server-side: {}
