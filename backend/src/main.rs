@@ -36,7 +36,8 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .app_data(web::Data::new(pg_pool.clone()))
-            .service(list_users)
+            .service(web::scope("/api")
+                .service(list_users))
     })
     .bind(&address)?
     .run()

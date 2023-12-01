@@ -6,7 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: Swatinem/rust-cache@v2.7.0
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
       - name: Docker login
         run: |
           docker login --username takotori --password ${{ secrets.GH_PAT }} ghcr.io
@@ -18,3 +25,8 @@ jobs:
         run: |
           docker build backend/ --tag ghcr.io/takotori/takotori-web-backend:latest -f backend/Dockerfile
           docker push ghcr.io/takotori/takotori-web-backend:latest
+        with:
+          push: true
+          set: |
+            *.cache-from=type=gha
+            *.cache-to=type=gha,mode=max
