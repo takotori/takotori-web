@@ -1,18 +1,25 @@
+version: "3.8"
 name: takotori-web
 services:
   frontend:
+    container_name: frontend
     build:
       context: frontend
       dockerfile: dev.Dockerfile
+    networks:
+      - client-side
     ports:
-      - 3000:80
+      - "3000:80"
+    depends_on:
+      - backend
 
   backend:
+    container_name: backend
     build:
       context: backend
       dockerfile: Dockerfile
     ports:
-        - 8000:8000
+        - "8000:8000"
     environment:
       - ADDRESS=0.0.0.0:8000
       - RUST_LOG=debug
@@ -27,12 +34,13 @@ services:
       - db
 
   db:
+    container_name: db
     image: postgres:12-alpine
     restart: always
     environment:
       - POSTGRES_PASSWORD=mysecretpassword
     ports:
-      - 5432:5432
+      - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
     networks:

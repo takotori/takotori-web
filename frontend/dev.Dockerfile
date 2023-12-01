@@ -5,7 +5,8 @@ ENV PORT=3000
 
 WORKDIR /app
 COPY package.json .
-RUN npm i
+COPY package-lock.json .
+RUN npm ci
 COPY . .
 
 RUN npm run build
